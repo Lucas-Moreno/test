@@ -5,7 +5,7 @@ import routes from "./routes/routes"
 import db from './models/db'
 import log from "./logger/log"
 import config from 'config'
-
+import winston from './config/config'
 
 const app = express()
 app.use(express.json())
@@ -25,6 +25,9 @@ app.use(
     credentials: true,
   })
 )
+
+
+app.use({ stream: winston.stream })
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

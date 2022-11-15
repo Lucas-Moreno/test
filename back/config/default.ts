@@ -1,5 +1,5 @@
 export default {
   port: 4000,
-  host: '0.0.0.0',
+  host: 'localhost',
   front_url: 3000
 };
