@@ -38,6 +38,14 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+
+  front:
+    build: ./front
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - db
+      
 volumes:
   db:
   pgadmin:
