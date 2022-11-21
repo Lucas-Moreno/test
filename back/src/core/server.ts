@@ -1,7 +1,7 @@
-import express from "express"
+import express, {Express} from "express"
 import localConfig from "../../config/server.local"
 import liveConfig from "../../config/server.live"
-// import logger from "../utils/logger";
+import logger from "../logger/logger";
 import routesContainer from "~/core/controllerContainer";
 import middlewareContainer from "~/core/middlewareContainer";
 import cors from "cors";
@@ -10,7 +10,7 @@ import cors from "cors";
 export class Server {
     private readonly app:express.Express;
 
-    public static server: Server
+    public static server:Server
 
     constructor(){
         this.app = express()
@@ -28,11 +28,18 @@ export class Server {
         middlewareContainer.forEach(middleware => app.use(middleware.basePath, middleware.middleware))
     }
 
-    private static getServerInstance(){
+    private static getServerInstance():Server{
         if (!this.server){
             this.server = new Server()
         }
         return this.server
+    }
+
+    private static getAppInstance():Express{
+        if (!this.server){
+            this.server = new Server()
+        }
+        return this.server.app
     }
 
     public static startServer(){
