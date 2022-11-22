@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+#Ignore local config files
+./config/logger.local.ts
+./config/server.local.ts
+#Ignore Jetbrains files
+.idea/
